@@ -227,7 +227,7 @@ void XWalkBrowserMainParts::PreMainMessageLoopRun() {
     xwalk_runner_->EnableRemoteDebugging(port);
   }
 
-  NativeAppWindow::Initialize();
+  native_app_window_.Initialize();
 
 #if defined(USE_WEBUI_FILE_PICKER)
   content::WebUIControllerFactory::RegisterFactory(

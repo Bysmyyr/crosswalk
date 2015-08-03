@@ -16,6 +16,8 @@
 #include "xwalk/extensions/common/xwalk_extension_permission_types.h"
 #include "xwalk/extensions/common/xwalk_extension_vector.h"
 
+#include "xwalk/runtime/browser/ui/native_app_window.h"
+
 namespace content {
 class RenderProcessHost;
 }
@@ -80,6 +82,7 @@ class XWalkBrowserMainParts : public content::BrowserMainParts {
 #if defined(USE_WEBUI_FILE_PICKER)
   scoped_ptr<wm::WMState> wm_state_;
 #endif
+  NativeAppWindow native_app_window_;
   DISALLOW_COPY_AND_ASSIGN(XWalkBrowserMainParts);
 };
 

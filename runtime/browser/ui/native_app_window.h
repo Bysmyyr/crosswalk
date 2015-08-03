@@ -14,6 +14,7 @@
 #include "ui/gfx/geometry/size.h"
 #include "ui/gfx/image/image.h"
 #include "ui/gfx/native_widget_types.h"
+#include "ui/views/views_delegate.h"
 
 namespace content {
 class WebContents;
@@ -68,7 +69,7 @@ class NativeAppWindow {
   };
 
   // Do one time initialization at application startup.
-  static void Initialize();
+  void Initialize();
 
   // Initialize the platform-specific native app window.
   static NativeAppWindow* Create(const CreateParams& params);
@@ -117,6 +118,9 @@ class NativeAppWindow {
 
  protected:
   virtual ~NativeAppWindow() {}
+
+ private:
+  scoped_ptr<views::ViewsDelegate> views_delegate_;
 };
 
 }  // namespace xwalk

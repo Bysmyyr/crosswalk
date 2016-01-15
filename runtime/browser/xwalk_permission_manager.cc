@@ -6,6 +6,7 @@
 #include "xwalk/runtime/browser/xwalk_permission_manager.h"
 
 #include <string>
+#include <vector>
 
 #include "base/callback.h"
 #include "content/public/browser/permission_type.h"
@@ -120,6 +121,19 @@ int XWalkPermissionManager::RequestPermission(
       break;
   }
   return request_id;
+}
+
+int XWalkPermissionManager::RequestPermissions(
+    const std::vector<content::PermissionType>& permissions,
+    content::RenderFrameHost* render_frame_host,
+    const GURL& requesting_origin,
+    bool user_gesture,
+    const base::Callback<void(
+        const std::vector<content::PermissionStatus>&)>& callback) {
+  // TODO(mrunalk): Rework this as per,
+  // https://codereview.chromium.org/1419083002
+  NOTIMPLEMENTED() << "RequestPermissions not implemented in Crosswalk";
+  return kNoPendingOperation;
 }
 
 void XWalkPermissionManager::CancelPermissionRequest(int request_id) {

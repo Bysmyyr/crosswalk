@@ -6,6 +6,8 @@
 #ifndef XWALK_RUNTIME_BROWSER_XWALK_PERMISSION_MANAGER_H_
 #define XWALK_RUNTIME_BROWSER_XWALK_PERMISSION_MANAGER_H_
 
+#include <vector>
+
 #include "base/callback_forward.h"
 #include "base/id_map.h"
 #include "base/macros.h"
@@ -32,6 +34,13 @@ class XWalkPermissionManager : public content::PermissionManager {
       const GURL& requesting_origin,
       bool user_gesture,
       const base::Callback<void(content::PermissionStatus)>& callback) override;
+  int RequestPermissions(
+      const std::vector<content::PermissionType>& permissions,
+      content::RenderFrameHost* render_frame_host,
+      const GURL& requesting_origin,
+      bool user_gesture,
+      const base::Callback<void(
+          const std::vector<content::PermissionStatus>&)>& callback) override;
   void CancelPermissionRequest(int request_id) override;
   void ResetPermission(content::PermissionType permission,
                        const GURL& requesting_origin,

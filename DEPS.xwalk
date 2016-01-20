@@ -68,6 +68,12 @@ solutions = [
     },
 
     'custom_hooks': [
+      # Disable the hook that downloads the Google Play services library and
+      # asks the user to accept its EULA if necessary. The prompt is not show
+      # correctly, and we call it ourselves in DEPS.xwalk.
+      {
+        'name': 'sdkextras',
+      },
       # Disable Chromium's "gyp" hooks, which runs the gyp_chromium script. We
       # are not interested in running it as we use gyp_xwalk instead (and it is
       # run at a later stage as a hook in Crosswalk's own DEPS).
